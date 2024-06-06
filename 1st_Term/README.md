@@ -9,7 +9,7 @@
 > Visualization Software: `Visual Molecular Dynamics (VMD)`
 >
 
-
+***
 
 ### Machine Learning 
 
@@ -29,6 +29,7 @@
 > 
 > 
 
+***
 
 ### Importance Profile Mapping to Structure 
 
@@ -36,6 +37,7 @@
 > Program: 
 >> Importing importance profile which maps with `resID` (residue id), then map the importance as gradient of color 
 
+***
 
 ### Dynamics of Important Profile 
 
