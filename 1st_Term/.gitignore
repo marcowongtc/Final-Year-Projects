@@ -1,0 +1,12 @@
+*.npy
+*.mp4
+*.gif
+*.png
+*.dat
+*.tcl
+*.bmp
+*.fig
+*.csv
+*:Zone.Identifier
+*.pyc
+*.pdb
