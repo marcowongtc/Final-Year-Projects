@@ -50,3 +50,9 @@
 >> - decreasing
 >> - generally unchanged
 
+
+***
+### Result 
+### [1st Term FYP Presentation](https://docs.google.com/presentation/d/14aqJsW1jiOO9M-DGyBVcd_HPgO4b68ga/edit?usp=sharing&ouid=110148678779983739038&rtpof=true&sd=true)
+
+### [1st Term FYP Report](https://drive.google.com/file/d/1xcn-ivw_24DQZdETndDcmKVqA2lJp3lw/view?usp=sharing)
