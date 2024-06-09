@@ -58,6 +58,8 @@
 	``` bash
 	vmd -e view.vmd
 	```
+	![simulation](./Asset/vmd_simulation.png)
+
 
 2. Use `GROMACS` to measure the minimum distance between each residue of p52 dimer and each nucleobase of the central DNA (Position -5 to +5). This `index.ndx` is needed for telling `GROMACS` which part to calculate. The measurement could be done as:
 	``` bash
@@ -66,10 +68,11 @@
 	Choose Protein as the reference and Central_DNA as the selection when prompt. 
 	Since we have 295 residues in each chain of p52 dimer (the index order is residue 35 to 329 of chain A [chain I], then residue 35 to 329 of chain C [chain II] ) and 11 nucleobases in each strand of central DNA (the position order is +5 to -5 of chain B[strand 3'], then -5 to +5 of chain D[strand 5']), the obtained `mindisres.xvg` contains 295*2*11*2 columns. The columns contain distance like this: pro1-dna1, pro2-dna1, ..., pro1-dna2, pro2-dna2, ...
 
-3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in `ml.m`. Graph of importance profile would be produced. 
+3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in `ml.m`. Graph of importance profile and `()_-model_()-iter_()-dist_()-corr_chain().csv` file would be produced under hyperparameter set with [model, $n$, $d$, $\rho$]. 
 
 	![ml_graph](./Asset/ml_graph.png)
 
+4. Use `csv_converter` to extract importance of each residues from csv files with corresponding hyperparamter tuning. Then it is plotted with `matplotlib` and map with structure using `VMD`. 
 
 
 
