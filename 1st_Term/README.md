@@ -96,11 +96,11 @@
 
 
 5. The hyperparameter tuning plot, residue importance against one of the hyperparameters is plotted using [`plotting.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting) by selecting corresponding csv file with resID and importance.  
-    ![Example_plot](/1st_Term/Asset/example_plot.png)
+    ![Example_plot](./Asset/example_plot.png)
 
     [`plotting_single.py`](https://github.com/marcowongtc/FYP/blob/main/1st_Term/plotting/plotting_single.py) is used to plot the importance dynamic of one residue under one hyperparameter changing. 
 
-    ![Example_single_plot](/1st_Term/Asset/example_single_plot.png)
+    ![Example_single_plot](./Asset/example_single_plot.png)
 
 
 
