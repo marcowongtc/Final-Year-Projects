@@ -58,29 +58,61 @@
 	``` bash
 	vmd -e view.vmd
 	```
-	![simulation](/1st_Term/Asset/vmd_simulation.png)
+	![simulation](./Asset/vmd_simulation.png)
 
 
 2. Use `GROMACS` to measure the minimum distance between each residue of p52 dimer and each nucleobase of the central DNA (Position -5 to +5). This `index.ndx` is needed for telling `GROMACS` which part to calculate. The measurement could be done as:
 	``` bash
 	gmx pairdist -f traj.xtc -s structure.pdb -n index.ndx -o mindisres.xvg -refgrouping res -selgrouping res
 	```
-	Choose Protein as the reference and Central_DNA as the selection when prompt. 
-	Since we have 295 residues in each chain of p52 dimer (the index order is residue 35 to 329 of chain A [chain I], then residue 35 to 329 of chain C [chain II] ) and 11 nucleobases in each strand of central DNA (the position order is +5 to -5 of chain B[strand 3'], then -5 to +5 of chain D[strand 5']), the obtained `mindisres.xvg` contains 295*2*11*2 columns. The columns contain distance like this: pro1-dna1, pro2-dna1, ..., pro1-dna2, pro2-dna2, ...
+	Choose Protein as the reference and Central_DNA as the selection when prompt   
+	> Protein:  
+    > index order (295 residues in each chain of p52 dimer)  
+    > **chain A [chain I]**: residue 35 to 329  
+    > **chain C [chain II]**: residue 35 to 329
+    >
+    > DNA:  
+    > 11 nucleobases in each strand of central DNA   
+    > **chain B[strand 3']**: position order +5 to -5  
+    > **chain D[strand 5']**: position order -5 to +5   
+    
+    `mindisres.xvg` with $295*2*11*2$ columns is obtained.   
+    The columns contain distance like this: `pro1-dna1`, `pro2-dna1`, ..., `pro1-dna2`, `pro2-dna2`, ...
 
-3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in `ml.m`. Graph of importance profile and `()_-model_()-iter_()-dist_()-corr_chain().csv` file would be produced under hyperparameter set with [model, $n$, $d$, $\rho$]. 
+3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in [`ml.m`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning).  
+    > Graph and csv of importance profile with naming `()_-model_()-iter_()-dist_()-corr` file would be produced under given hyperparameter set with [model, $n$, $d$, $\rho$]. 
 
-	![ml_graph](/1st_Term/Asset/ml_graph.png)
+    ![ml_graph](./Asset/ml_graph.png)
 
-4. Use [`plotting/csv_converter`]() to extract importance of each residues from csv files with corresponding hyperparamter tuning. Then it is plotted with `matplotlib` and map with structure using `VMD`. 
+4. Use [`csv_converter.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting/csv_converter) to split the original importance profile csv into two chain of protein for plotting.   
+(Updated plotting.py does not require this step!) 
+    > ()_-model_()-iter_()-dist_()-corr.csv  
+    > -> ()_-model_()-iter_()-dist_()-corr-()chain.csv  
+    > -> ()_-model_()-iter_()-dist_()-corr-()chain.csv  
+
+
+5. The hyperparameter tuning plot, residue importance against one of the hyperparameters is plotted using [`plotting.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting) by selecting corresponding csv file with resID and importance. 
+![Example_plot](./Asset/example_plot.png)
+
+6. For better visualization of result, color mapping of importance profile to the structure using [`color.tcl`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/molecular_dynamics/color_mapping) and importance profile `.dat` (direct change the file type by renaming). We visualize the result with selected residue with a peak in importance profile and the whole structure separately. Here is the example code:
+
+    ```
+        set input [open "rf-model_20-iter_5.0-dist_0.9-corr_chain2.dat" r]
+        
+        while {[gets $input line] >= 0} {
+        set resid [lindex $line 0]; 
+        set importance [lindex $line 1]; 
+        set sel [atomselect top "chain C and resid $resid"]; 
+        $sel set beta $importance; 
+        $sel delete
+        }
+    ```
 
 
 
 ## III |  Result 
 
-| Leading Time  | Trailing Time  |
-| ----------- | ----------- |
-| ![Example]()      | ![Example]()        |
+
 
 
 ### [1st Term FYP Presentation](https://docs.google.com/presentation/d/14aqJsW1jiOO9M-DGyBVcd_HPgO4b68ga/edit?usp=sharing&ouid=110148678779983739038&rtpof=true&sd=true)
