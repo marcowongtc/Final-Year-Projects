@@ -1,64 +1,64 @@
 # Machine Learning Importance-Residue Profile Analysis on MD simulation of NF-κB p52 homodimer-DNA complexes
 
-## 1. Details
+## I |  Overview
 
 ### Molecular Dynamics 
-> 12 $\mu s$ Trajectories of PSel-κB p52 Homodimer-DNA Complex Simulations 
->   - Natural G/C centric DNA
->   - -1/+1 swap DNA (1 base pair change)
-> 
-> Simulation Software: `GROMACS`   
-> Visualization Software: `Visual Molecular Dynamics (VMD)`
->
+12 $\mu s$ Trajectories of PSel-κB p52 Homodimer-DNA Complex Simulations 
+   - Natural G/C centric DNA
+   - -1/+1 swap DNA (1 base pair change)
+ 
+ Simulation Software: `GROMACS`   
+ Visualization Software: `Visual Molecular Dynamics (VMD)`
+
 
 ***
 
 ### Machine Learning 
 
-> Machine Learning Model 
-> - ***Logistic Regression*** (LR)
-> - ***Random Forest*** (RF)
->
-> Hyperparameter Tuning
-> - Correlation Cutoff $\rho$
-> - Distance Cutoff $d$
-> - Iteration Cutoff $n$
-> - Partition Ratio $p$
->
-> Language: `Matlab`  
+ Machine Learning Model 
+ - ***Logistic Regression*** (LR)
+ - ***Random Forest*** (RF)
+
+ Hyperparameter Tuning
+ - Correlation Cutoff $\rho$
+ - Distance Cutoff $d$
+ - Iteration Cutoff $n$
+ - Partition Ratio $p$
+
+ Language: `Matlab`  
 > Program:  
->> Grasping the **dynamical importance profile** of all residues in p52 homodimer  to differentiate two different complex reaction, in turn obtaining **important residues of p52 homodimer** and its **dynamical behavior** under hyperparameter tuning to the reaction when there is a subtle change in DNA  
-> 
-> 
+> Grasping the **dynamical importance profile** of all residues in p52 homodimer  to differentiate two different complex reaction, in turn obtaining **important residues of p52 homodimer** and its **dynamical behavior** under hyperparameter tuning to the reaction when there is a subtle change in DNA  
+ 
+ 
 
 ***
 
 ### Importance Profile Mapping to Structure 
 
-> Language: `VMD Tk Console`  
+ Language: `VMD Tk Console`  
 > Program: 
->> Importing importance profile which maps with `resID` (residue id), then map the importance as gradient of color 
+> Importing importance profile which maps with `resID` (residue id), then map the importance as gradient of color 
 
 ***
 
 ### Dynamics of Important Profile 
 
-> Language: `Python` - `Matplotlib` & `Numpy`   
+ Language: `Python` - `Matplotlib` & `Numpy`   
 > Program:   
->> Plotting selected important residue (manually picked from observing importance profile) then plotting its trend of varying hyperparameter.   
->>
->> The results are categorized into
->> - increasing
->> - decreasing
->> - generally unchanged
+> Plotting selected important residue (manually picked from observing importance profile) then plotting its trend of varying hyperparameter.   
+>
+> The results are categorized into
+> - increasing
+> - decreasing
+> - generally unchanged
 
-## 2. Code Recipe
+## II |  Code Recipe
 
-1. Do the `VMD tutorial` and use `VMD` to view the trajectories. A premade session to view the trajectory could be loaded as:
+1. Download the `VMD tutorial` from VMD official page and do it to familiar the coding of VMD. Use `VMD` to view the trajectories. A premade session to view the trajectory could be loaded as:
 	``` bash
 	vmd -e view.vmd
 	```
-	![simulation](./Asset/vmd_simulation.png)
+	![simulation](/1st_Term/Asset/vmd_simulation.png)
 
 
 2. Use `GROMACS` to measure the minimum distance between each residue of p52 dimer and each nucleobase of the central DNA (Position -5 to +5). This `index.ndx` is needed for telling `GROMACS` which part to calculate. The measurement could be done as:
@@ -70,13 +70,13 @@
 
 3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in `ml.m`. Graph of importance profile and `()_-model_()-iter_()-dist_()-corr_chain().csv` file would be produced under hyperparameter set with [model, $n$, $d$, $\rho$]. 
 
-	![ml_graph](./Asset/ml_graph.png)
+	![ml_graph](/1st_Term/Asset/ml_graph.png)
 
-4. Use `csv_converter` to extract importance of each residues from csv files with corresponding hyperparamter tuning. Then it is plotted with `matplotlib` and map with structure using `VMD`. 
+4. Use [`plotting/csv_converter`]() to extract importance of each residues from csv files with corresponding hyperparamter tuning. Then it is plotted with `matplotlib` and map with structure using `VMD`. 
 
 
 
-## 3. Result 
+## III |  Result 
 
 | Leading Time  | Trailing Time  |
 | ----------- | ----------- |
