@@ -59,17 +59,19 @@
 ## II |  Code Recipe
 
 1. Download the `VMD tutorial` from VMD official page and do it to familiar the coding of VMD. To learn, you can access these two notion notes: [VMD Tutorial](https://shaded-cannon-4d7.notion.site/VMD-Tutorial-09aaff9905f7408fab82438e69ac5475?pvs=4) and [VMD Scipting](https://shaded-cannon-4d7.notion.site/VMD-Scripting-7660da8c0f414945a4d55c054fd15707?pvs=4). Use `VMD` to view the trajectories. A premade session to view the trajectory could be loaded as:
-	``` bash
+	``` 
 	vmd -e view.vmd
-	```
-	![protein&dna](./Asset/dna&protein.jpg)
-    ![simulation](./Asset/vmd_simulation.png)
+	```  
+
+![protein&dna](./Asset/dna&protein.jpg)
+![simulation](./Asset/vmd_simulation.png)
 
 
 2. Use `GROMACS` to measure the minimum distance between each residue of p52 dimer and each nucleobase of the central DNA (Position -5 to +5). This `index.ndx` is needed for telling `GROMACS` which part to calculate. The measurement could be done as:
-	``` bash
+	``` 
 	gmx pairdist -f traj.xtc -s structure.pdb -n index.ndx -o mindisres.xvg -refgrouping res -selgrouping res
-	```
+	```  
+    
 	Choose Protein as the reference and Central_DNA as the selection when prompt   
 	> Protein:  
     > index order (295 residues in each chain of p52 dimer)  
@@ -87,7 +89,7 @@
 3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in [`ml.m`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning). It is important to note that the data is preprocessed before fitting the model. The details can be seen [**here**](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning/README.md)!
     > Graph and csv of importance profile with naming `()_-model_()-iter_()-dist_()-corr` file would be produced under given hyperparameter set with [model, $n$, $d$, $\rho$]. 
 
-    ![ml_graph](./Asset/ml_graph.png)
+![ml_graph](./Asset/ml_graph.png)
 
 4. Use [`csv_converter.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting/csv_converter) to split the original importance profile csv into two chain of protein for plotting.   
 (Updated plotting.py does not require this step!) 
@@ -97,11 +99,11 @@
 
 
 5. The hyperparameter tuning plot, residue importance against one of the hyperparameters is plotted using [`plotting.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting) by selecting corresponding csv file with resID and importance.  
-    ![Example_plot](./Asset/example_plot.png)
+![Example_plot](./Asset/example_plot.png)
 
     [`plotting_single.py`](https://github.com/marcowongtc/FYP/blob/main/1st_Term/plotting/plotting_single.py) is used to plot the importance dynamic of one residue under one hyperparameter changing. 
 
-    ![Example_single_plot](./Asset/example_single_plot.png)
+![Example_single_plot](./Asset/example_single_plot.png)
 
 
 
