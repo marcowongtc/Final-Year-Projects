@@ -62,7 +62,8 @@
 	``` bash
 	vmd -e view.vmd
 	```
-	![simulation](./Asset/vmd_simulation.png)
+	![protein&dna](./Asset/dna&protein.jpg)
+    ![simulation](./Asset/vmd_simulation.png)
 
 
 2. Use `GROMACS` to measure the minimum distance between each residue of p52 dimer and each nucleobase of the central DNA (Position -5 to +5). This `index.ndx` is needed for telling `GROMACS` which part to calculate. The measurement could be done as:
