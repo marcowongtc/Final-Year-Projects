@@ -91,8 +91,8 @@
     > -> ()_-model_()-iter_()-dist_()-corr-()chain.csv  
 
 
-5. The hyperparameter tuning plot, residue importance against one of the hyperparameters is plotted using [`plotting.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting) by selecting corresponding csv file with resID and importance. 
-![Example_plot](./Asset/example_plot.png)
+5. The hyperparameter tuning plot, residue importance against one of the hyperparameters is plotted using [`plotting.py`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/plotting) by selecting corresponding csv file with resID and importance.  
+![Example_plot](/1st_Term/Asset/example_plot.png)
 
 6. For better visualization of result, color mapping of importance profile to the structure using [`color.tcl`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/molecular_dynamics/color_mapping) and importance profile `.dat` (direct change the file type by renaming). We visualize the result with selected residue with a peak in importance profile and the whole structure separately. Here is the example code:
 
