@@ -63,7 +63,6 @@
 	vmd -e view.vmd
 	```  
 
-![protein&dna](./Asset/dna&protein.jpg)
 ![simulation](./Asset/vmd_simulation.png)
 
 
@@ -86,7 +85,7 @@
     `mindisres.xvg` with $295*2*11*2$ columns is obtained.   
     The columns contain distance like this: `pro1-dna1`, `pro2-dna1`, ..., `pro1-dna2`, `pro2-dna2`, ...
 
-3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in [`ml.m`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning). It is important to note that the data is preprocessed before fitting the model. The details can be seen [**here**](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning/README.md)!
+3. Use `mindisres.xvg` as the training set and train your own linear logistic regression and random forest model in [`ml.m`](https://github.com/marcowongtc/FYP/tree/main/1st_Term/machine_learning). It is important to note that the data is preprocessed before fitting the model. The details can be seen in the Section: Method in the [**Presentation**](https://docs.google.com/presentation/d/14aqJsW1jiOO9M-DGyBVcd_HPgO4b68ga/edit?usp=sharing&ouid=110148678779983739038&rtpof=true&sd=true)!
     > Graph and csv of importance profile with naming `()_-model_()-iter_()-dist_()-corr` file would be produced under given hyperparameter set with [model, $n$, $d$, $\rho$]. 
 
 ![ml_graph](./Asset/ml_graph.png)
