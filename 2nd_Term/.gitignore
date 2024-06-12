@@ -1,6 +1,5 @@
 *.npy
 *.mp4
-*.gif
 *.png
 *.dat
 *.tcl
@@ -10,3 +9,6 @@
 *:Zone.Identifier
 *.pyc
 *.pdb
+*.xtc
+Report/animation/*.gif
+Protein_Simulation/nanosecond/amber14sb_OL15.ff/*

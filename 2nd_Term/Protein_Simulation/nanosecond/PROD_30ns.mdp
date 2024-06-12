@@ -1,0 +1,63 @@
+; Run Control Parameters
+integrator              = md                ; leap-frog integrator
+tinit                   = 0
+dt                      = 0.002             ; 2.0fs
+nsteps                  = 15000000           ; 0.002fs*15000000 = 30ns     
+
+; Output frequency
+nstxout                 = 0                 ; do not output coordinates (x)
+nstvout                 = 0                 ; do not output velocities (v)
+nstfout                 = 0                 ; do not output force (f)
+nstlog                  = 50                ; update log file every 0.1 ps
+nstenergy               = 50                ; save energies every 0.1 ps
+nstxout-compressed      = 50                ; compressed trajectory file every 0.1 ps (.xtc file)   <--
+
+; Neighbor searching/list parameters
+cutoff-scheme           = Verlet            ; create neighboring list (Verlet buffer)
+ns_type                 = grid              ; search neighboring grid cells (space decomp.)
+nstlist                 = 10                ; 20 fs, update the neighboring list every 20 fs, largely irrelevant with Verlet
+rlist                   = 0.9               ; nblist cut-off
+
+; Method for doing Van der Waals
+vdw-type                = Cut-off           ; Apply cut-offs. (Twin range cut-offs with neighbor list cut-off rlist and VdW cut-off rvdw, where rvdw ≥ rlist.)
+vdw-modifier            = force-switch      ;
+rvdw-switch             = 0.8               ; Ron in NAMD (nm)
+rvdw                    = 0.9               ; Roff in NAMD (nm)
+DispCorr                = EnerPres          ; according to OPC instruction (or vdwtype = PME)
+
+; Method for doing electrostatics
+coulombtype             = PME               ; Use PME
+rcoulomb                = 0.9               ; short-range electrostatic cutoff (in nm)
+
+; Periodic boundary conditions: xyz, no, xy
+pbc                     = xyz               ; Apply peridic B.C. in all directions
+periodic-molecules      = no                ; The molecule should not see its own periodic image
+
+; Spacing for the PME/PPPM FFT grid
+fourierspacing          = 0.12              ; grid spacing for FFT
+pme_order               = 4                 ; PME spline order
+ewald-rtol              = 1e-5
+
+; Temperature coupling
+tcoupl                  = v-rescale         ; modified Berendsen thermostat
+tc-grps                 = Protein Non-Protein   ; two coupling groups - more accurate (Protein and Non-Protein are coupled to the Bath individually. More Accurate.)
+tau_t                   = 0.1     0.1       ; time constant, in ps
+ref_t                   = 300     300       ; reference temperature, one for each group, in K
+
+; Pressure coupling
+pcoupl                  = C-rescale         ; Pressure coupling on in NPT
+pcoupltype              = isotropic         ; uniform scaling of box vectors
+tau_p                   = 2.0               ; time constant, in ps
+ref_p                   = 1.0               ; reference pressure, in bar
+compressibility         = 4.5e-5            ; isothermal compressibility of water, bar^-1
+refcoord_scaling        = com               ; Scale the center of mass of the reference coordinates with the scaling matrix of the pressure coupling. (What is this?)
+
+; GENERATE VELOCITIES FOR STARTUP RUN
+gen_vel                 = no                ;
+
+; OPTIONS FOR BONDS
+continuation            = yes               ; continue run
+constraint_algorithm    = lincs             ; holonomic constraints
+constraints             = h-bonds           ; all bonds (even heavy atom-H bonds) constrained
+lincs_iter              = 1                 ; accuracy of LINCS
+lincs_order             = 4                 ; also related to accuracy
