@@ -43,7 +43,11 @@ Visualization: `VMD`
 
 #### Simulation Information
 
-![random diffusion simulation](/Asset/2nd_Term/random_walker.png)
+| 6D trajectory | 63D trajectory         | 
+| ----------- | ----------- | 
+| ![random diffusion fig](/Asset/2nd_Term/random_walker.png) | ![random diffusin simulation](/Asset/2nd_Term/diffusion_1000_21.gif)
+
+
 
 Random Walker (63-D)  
 Equal Probability to go forward / backward for each step  
