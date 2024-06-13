@@ -9,6 +9,7 @@
 *:Zone.Identifier
 *.pyc
 *.pdb
+*.gif
 *.xtc
 Report/animation/*.gif
 Protein_Simulation/nanosecond/amber14sb_OL15.ff/*
