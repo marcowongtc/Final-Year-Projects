@@ -67,7 +67,7 @@ Visualization: `Python - Matplotlib`
 ## II | Code Recipe
 
 ### Simulation: [Peptide](./Protein_Simulation/README.md) + [Random diffusion](./Diffustion_Simulation/README.md)
-### Analysis: [Principal Component Analysis (PCA)](./PCA/README.md) + [Cosine Content](./Cosine_Content/README.md)
+### Analysis: [Principal Component Analysis (PCA) + Cosine Content](./Cosine_Content/README.md)
 
 ## III | Result 
 
