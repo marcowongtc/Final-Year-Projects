@@ -27,7 +27,7 @@ The whole technique is introduced in detail in the Section: Principal Component 
 
 The program is developed using `Python`. Here is the workflow.
 
-1. calculate the covariance matrix of the given trajectory
+1. calculate the covariance matrix of the given trajectory  
 $$C_{ij}=\left<(x_i(t)-\left<x_i(t)\right>)(x_j(t)-\left<x_j(t)\right>\right>$$
 
 2. manipulate the eigenvectors (new basis) $R$ and eigenvalues (new variance) $\vec{\lambda}$ of the covariance matrix using in-built function in `numpy.linalg.eig` 
