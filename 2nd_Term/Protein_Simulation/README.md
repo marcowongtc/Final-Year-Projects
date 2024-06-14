@@ -80,8 +80,13 @@ Make sure to adjust the file names and paths in the commands based on your speci
 Please note that running GROMACS simulations may require additional steps, such as equilibration and analysis, depending on your specific objectives. The above steps provide a basic outline for running a simulation, but you might need to customize the protocol further for your specific needs.
 
 
-# GROMACS | Trajectory Recentering
+# GROMACS | Trajectory Centering
 
+Trajectory simulation is set in a periodic boundary condition, which structure would pop out to other side when it reach the boundary of simulation box. Centering the whole trajectory ensures right coordinate marking on the whole trajectory as time proceeds. 
+
+| original trajectory | Centered trajectory         | 
+| ----------- | ----------- | 
+| ![original trajectory](/Asset/2nd_Term/peptide_broken.png) | ![recentered trajectory](/Asset/2nd_Term/peptide_recenter.png)
 
 
 ```bash
