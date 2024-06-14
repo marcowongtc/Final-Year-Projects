@@ -1,4 +1,4 @@
-# Description
+# Simulation ([all](.))
 This project provides crystal structure and trajectory files for the BIND peptide (AEIRLVSKDGKSKGIAYIEFK) simulation.   
 The simulation involves the folding of a straightened BIND peptide in a dodecahedron box containing 0.15 M NaCl solution.   
 The files included are:  
