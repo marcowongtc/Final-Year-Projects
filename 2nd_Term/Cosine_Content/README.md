@@ -40,10 +40,8 @@ $$C_{ij}=\left<(x_i(t)-\left<x_i(t)\right>)(x_j(t)-\left<x_j(t)\right>\right>$$
 
 # Cosine Content Analysis ([program](./Updated_Program/3.%20cosine_auto.py))
 
-Method of measuring the cosine content in PCs 
-$$
-c_n = \frac{2}{T}\left(\int^{T}_0cos(\frac{n\pi t}{T})p_n(t)\right)^2\left(\int^{T}_0p^2_n(t)dt\right)^{-1}
-$$
+Method of measuring the cosine content in PCs   
+$$c_n = \frac{2}{T}\left(\int^{T}_0cos(\frac{n\pi t}{T})p_n(t)\right)^2\left(\int^{T}_0p^2_n(t)dt\right)^{-1}$$
 
 $0$ represents no cosine and $1$ represents a perfect cosine
 
